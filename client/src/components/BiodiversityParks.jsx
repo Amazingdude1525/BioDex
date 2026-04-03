@@ -12,17 +12,17 @@ const PARKS = [
     species: [
       {
         name: "Painted Stork",
-        image: "/parks/painted-stork.jpg",
+        image: "/parks/painted-stork.jpg.jpg",
         fact: "The Painted Stork (Mycteria leucocephala) breeds in colonies in Keoladeo, nesting in tall trees over water. A single colony can have thousands of nesting pairs.",
       },
       {
         name: "Siberian Crane",
-        image: "/parks/siberian-crane.jpg",
+        image: "/parks/siberian-crane.jpg.jpg",
         fact: "The Siberian Crane is a critically endangered migratory bird. Keoladeo was once their wintering ground — they haven't been sighted here since 2002, making conservation efforts vital.",
       },
       {
         name: "Sambar Deer",
-        image: "/parks/sambar-deer.jpg",
+        image: "/parks/sambar-deer.jpg.jpg",
         fact: "The Sambar (Rusa unicolor) is India's largest deer, weighing up to 300 kg. Its loud alarm bark, called a 'belling cry', warns other animals of approaching predators.",
       },
     ],
@@ -36,17 +36,17 @@ const PARKS = [
     species: [
       {
         name: "Leopard",
-        image: "/parks/leopard.jpg",
+        image: "/parks/leopard.jpg.jpg",
         fact: "SGNP hosts ~47 leopards that coexist remarkably close to 20 million people. They primarily prey on dogs and livestock, occasionally venturing into residential areas at night.",
       },
       {
         name: "Rhesus Macaque",
-        image: "/parks/macaque.jpg",
+        image: "/parks/macaque.jpg.jpg",
         fact: "The Rhesus Macaque (Macaca mulatta) is highly adaptable and intelligent. They have been sent to space and are crucial to biomedical research. In SGNP they live in large social troops.",
       },
       {
         name: "Flying Fox",
-        image: "/parks/flying-fox.jpg",
+        image: "/parks/flying-fox.jpg.jpg",
         fact: "The Indian Flying Fox (Pteropus giganteus), with a wingspan up to 1.5 meters, is the world's largest bat. They are critical pollinators and seed dispersers in Indian forests.",
       },
     ],
@@ -60,17 +60,17 @@ const PARKS = [
     species: [
       {
         name: "One-Horned Rhino",
-        image: "/parks/rhino.jpg",
+        image: "/parks/rhino.jpg.jpg",
         fact: "Kaziranga hosts over 2,600 Indian One-Horned Rhinos (Rhinoceros unicornis), a massive conservation success story. Their horn is solid keratin — the same material as human fingernails.",
       },
       {
         name: "Asian Elephant",
-        image: "/parks/elephant.jpg",
+        image: "/parks/elephant.jpg.jpg",
         fact: "Asian Elephants in Kaziranga have learned to swim across the Brahmaputra river during floods. They are keystone species — their paths through dense forest create pathways used by other wildlife.",
       },
       {
         name: "Bengal Tiger",
-        image: "/parks/tiger.jpg",
+        image: "/parks/tiger.jpg.jpg",
         fact: "Kaziranga has the world's highest density of Bengal Tigers — around 120 tigers in 430 sq km. Unlike most cats, Tigers are powerful swimmers and actively seek water to cool down.",
       },
     ],
@@ -84,17 +84,17 @@ const PARKS = [
     species: [
       {
         name: "Bengal Tiger",
-        image: "/parks/tiger.jpg",
+        image: "/parks/tiger.jpg.jpg",
         fact: "Corbett hosts over 260 tigers. The park's diverse terrain — grasslands, forests, and the Ramganga River — provides tigers with the perfect mix of hunting grounds and water access.",
       },
       {
         name: "Gharial",
-        image: "/parks/gharial.jpg",
+        image: "/parks/gharial.jpg.jpg",
         fact: "The Gharial (Gavialis gangeticus) is one of the world's most critically endangered crocodilians. Its distinctive long, narrow snout has 110 razor-sharp teeth — perfect for catching slippery fish.",
       },
       {
         name: "Great Hornbill",
-        image: "/parks/hornbill.jpg",
+        image: "/parks/hornbill.jpg.jpg",
         fact: "The Great Hornbill (Buceros bicornis) is known for its massive yellow casque on top of its bill. Male hornbills seal the female inside a tree cavity during nesting — feeding her through a small slit.",
       },
     ],
