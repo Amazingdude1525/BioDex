@@ -11,6 +11,11 @@ import chatRoutes from "./src/routes/chat.js";
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// ── Root Health Handler ─────────────────────────────
+app.get("/", (req, res) => {
+  res.send("🦎 BioDex API is Online!");
+});
+
 // ── Middleware ──────────────────────────────────────
 app.use(cors({
   origin: true,
