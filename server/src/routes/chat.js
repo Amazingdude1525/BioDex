@@ -27,15 +27,20 @@ router.post("/", async (req, res) => {
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-pro",
       systemInstruction: SYSTEM_PROMPT,
     });
 
     // Build chat history from previous messages
-    const chatHistory = (history || []).map((msg) => ({
+    let chatHistory = (history || []).map((msg) => ({
       role: msg.role === "agent" ? "model" : "user",
       parts: [{ text: msg.text }],
     }));
+
+    // Gemini requires the very first history message to be from the user
+    if (chatHistory.length > 0 && chatHistory[0].role === "model") {
+      chatHistory.shift();
+    }
 
     const chat = model.startChat({ history: chatHistory });
     const result = await chat.sendMessage(message);
@@ -44,6 +49,9 @@ router.post("/", async (req, res) => {
     res.json({ reply: text });
   } catch (err) {
     console.error("Gemini error:", err.message);
+    if (err.message.includes("API key not valid")) {
+      return res.status(403).json({ error: "Your Gemini API Key is invalid. Please check your .env file." });
+    }
     res.status(500).json({ error: "Failed to get response from BioDex Agent." });
   }
 });
