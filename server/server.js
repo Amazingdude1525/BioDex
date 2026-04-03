@@ -16,11 +16,27 @@ app.use(cors({
   origin: true,
   credentials: true,
 }));
+
+// Manual CORS fallback for preflight
+app.options("*", (req, res) => {
+  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.sendStatus(204);
+});
+
 app.use(express.json({ limit: "10mb" }));
 
 // ── Health Check ───────────────────────────────────
-app.get("/api/health", (_req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
+app.get("/api/health", (req, res) => {
+  console.log("🩺 Health Check from:", req.headers.origin);
+  res.json({ 
+    status: "ok", 
+    timestamp: new Date().toISOString(),
+    env: process.env.NODE_ENV,
+    db: !!process.env.DATABASE_URL
+  });
 });
 
 // ── API Routes ─────────────────────────────────────
