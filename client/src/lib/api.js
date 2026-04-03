@@ -11,4 +11,19 @@ const api = axios.create({
 
 console.log("🚀 BioDex API Connected to:", baseURL);
 
+// Detailed Error Logger for Production
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    console.error("❌ BioDex API Error Details:", {
+      message: err.message,
+      url: err.config?.url,
+      method: err.config?.method,
+      code: err.code,
+      stack: err.stack,
+    });
+    return Promise.reject(err);
+  }
+);
+
 export default api;

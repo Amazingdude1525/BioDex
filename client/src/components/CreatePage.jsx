@@ -56,6 +56,10 @@ export default function CreatePage() {
   const handleDrop = (e) => { e.preventDefault(); setDragOver(false); processFile(e.dataTransfer.files?.[0]); };
 
   const captureLocation = async () => {
+    if (!window.isSecureContext) {
+      setErrorMsg("GPS requires a secure (HTTPS) connection. Please check your URL.");
+      return;
+    }
     setIsLocating(true);
     setErrorMsg("");
     try {
