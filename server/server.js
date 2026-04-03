@@ -30,6 +30,6 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/chat", chatRoutes);
 
 // ── Start Server ───────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`🦎 BioDex API running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`🦎 BioDex API running on http://0.0.0.0:${PORT}`);
 });
