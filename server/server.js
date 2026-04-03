@@ -22,15 +22,6 @@ app.use(cors({
   credentials: true,
 }));
 
-// Manual CORS fallback for preflight
-app.options(/(.*)/, (req, res) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin || "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.sendStatus(204);
-});
-
 app.use(express.json({ limit: "10mb" }));
 
 // ── Health Check ───────────────────────────────────
@@ -52,5 +43,10 @@ app.use("/api/chat", chatRoutes);
 
 // ── Start Server ───────────────────────────────────
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`🦎 BioDex API running on http://0.0.0.0:${PORT}`);
+  console.log(`
+  🚀 BioDex API is Waking Up...
+  🔗 Port: ${PORT}
+  📡 DB_URL: ${process.env.DATABASE_URL ? "SET" : "MISSING"}
+  🦎 http://0.0.0.0:${PORT}
+  `);
 });
