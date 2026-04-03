@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | BioDex Policy</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Enables smooth gliding when you click nav links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background-color: #fcfcfc; 
+      color: #111111;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navbar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #ffffff; 
+      border-bottom: 1px solid #efefef;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #767676;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #111111;
+    }
+
+    .nav-links a.active {
+      color: #111111;
+      border-bottom: 2px solid #111111;
+      padding-bottom: 4px;
+    }
+
+    /* Page Header */
+    .page-header {
+      text-align: center;
+      margin-top: 140px;
+      margin-bottom: 60px;
+    }
+
+    .page-header h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      margin: 0;
+      color: #111111;
+    }
+
+    /* Two-Column Layout Container */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 64px;
+      padding: 0 24px 100px;
+      align-items: flex-start;
+    }
+
+    /* Left Column: Main Content */
+    .content {
+      flex: 1;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .content h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-top: 56px;
+      margin-bottom: 16px;
+      color: #111111;
+      scroll-margin-top: 100px; 
+    }
+
+    .content p, .content ul {
+      margin-bottom: 24px;
+      color: #333333;
+    }
+
+    .content ul {
+      padding-left: 20px;
+    }
+
+    .content li {
+      margin-bottom: 12px;
+    }
+
+    .content a {
+      color: #111111;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+
+    .content a:hover {
+      color: #555555;
+    }
+
+    /* The "Simply Put" Gray Box */
+    .simply-put {
+      background-color: #f2f2f2; 
+      border-radius: 16px;
+      padding: 24px;
+      margin: 32px 0;
+    }
+
+    .simply-put-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #111111;
+    }
+
+    .simply-put-text {
+      font-size: 16px;
+      margin: 0;
+      color: #444444;
+    }
+
+    /* --- VISUAL SEPARATORS --- */
+    .major-section {
+      margin-top: 80px;
+      padding-top: 60px;
+      border-top: 3px solid #eaeaea;
+    }
+
+    .major-section-title {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      color: #111111;
+      scroll-margin-top: 100px;
+    }
+
+    /* Right Column: Sticky Table of Contents */
+    .sidebar {
+      width: 260px;
+      position: sticky;
+      top: 100px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .sidebar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background-color: #cccccc;
+      border-radius: 4px;
+    }
+
+    .sidebar-title {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: #111111;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-item {
+      border-top: 1px solid #efefef;
+    }
+
+    .toc-link {
+      display: block;
+      padding: 16px 0;
+      text-decoration: none;
+      color: #555555;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .toc-link:hover {
+      color: #111111;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        flex-direction: column-reverse;
+        gap: 40px;
+      }
+      .sidebar {
+        width: 100%;
+        position: static;
+        max-height: none;
+      }
+      .nav-links {
+        display: none;
+      }
+      .page-header h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" onclick="window.scrollTo(0,0); return false;" class="nav-brand">BioDex</a>
+    
+    <div class="nav-links">
+      <a href="#" class="active" onclick="window.scrollTo(0,0); return false;">Terms</a>
+      <a href="#privacy-section">Privacy</a>
+      <a href="#contact-section">Contact Us</a>
+    </div>
+    
+    <div style="width: 60px;"></div>
+  </nav>
+
+  <div class="page-header">
+    <h1>Terms of Service</h1>
+  </div>
+
+  <div class="container">
+    
+    <div class="content">
+      <h2>Thank you for using BioDex</h2>
+      <p>These Terms of Service ("Terms") constitute a legally binding agreement made between you and Team Debug Duo concerning your access to and use of the BioDex application. By using our service, you signify that you have read, understood, and agree to be bound by these Terms.</p>
+
+      <div class="simply-put">
+        <div class="simply-put-title">More simply put</div>
+        <p class="simply-put-text">Using BioDex means you agree to follow our rules. Stay safe, respect wildlife, and play fair with your data logging.</p>
+      </div>
+
+      <h3 id="section-1">1. The BioDex Service and Licensing</h3>
+      <p>BioDex is an interactive wildlife tracking platform. It allows users to log flora and fauna sightings using the HTML5 Geolocation API, populating a community-driven Leaflet map for research and education. Gamified elements like "Discovery Badges" are virtual and hold no real-world value.</p>
+
+      <h3 id="section-2">2. Account Registration and Security</h3>
+      <p>You are responsible for maintaining the confidentiality of your account details. You must be at least 13 years of age to use this Service. Team Debug Duo is not liable for losses resulting from unauthorized account access due to user negligence.</p>
+
+      <h3 id="section-3">3. Real-World Safety and Conduct</h3>
+      <p>Safety is our top priority. You agree to remain aware of your surroundings and avoid trespassing on private property while searching for wildlife. Do not interact with animals; maintain a respectful distance at all times.</p>
+
+      <h3 id="section-4">4. Prohibited Digital Activities</h3>
+      <p>The integrity of our dataset is vital. GPS spoofing, automated data scraping, and harassment of other users are strictly prohibited and will result in immediate account termination and a permanent IP ban.</p>
+
+      <h3 id="section-5">5. User Content and AI Integration</h3>
+      <p>You retain rights to your photos but grant BioDex a worldwide, royalty-free license to display them on the community map and use them to train our automated AI Vision identification models for species classification.</p>
+
+      <h3 id="section-6">6. Intellectual Property Rights</h3>
+      <p>All source code, software, branding, and graphics are owned by Team Debug Duo. You may not copy, redistribute, or reverse-engineer our proprietary property without express written permission.</p>
+
+      <h3 id="section-7">7. Account Termination</h3>
+      <p>We reserve the right to suspend or terminate accounts for any reason, particularly for breaches of safety, trespassing reports, or data integrity violations.</p>
+
+      <h3 id="section-8">8. Disclaimers and Limitation of Liability</h3>
+      <p>The Service is provided "as is." Team Debug Duo is not liable for physical injuries, property damage, or legal citations (like trespassing fines) incurred while using the application in the real world.</p>
+
+      <div id="privacy-section" class="major-section">
+        <h2 class="major-section-title">Privacy Policy</h2>
+        <p>Your privacy is important to us. We only access your GPS coordinates when you tap to log a sighting. We do not track your background movements or sell your personal data.</p>
+        <p>Anonymized data may be shared with environmental researchers. Personal details like your email are kept secure and are never shared with third parties without your consent.</p>
+      </div>
+
+      <div id="contact-section" class="major-section">
+        <h2 class="major-section-title">Contact Us</h2>
+        <p>BioDex was designed and developed by <strong>Team Debug Duo</strong> for the HackMatrix 2026 Open Innovation track.</p>
+        <p>For inquiries, bug reports, data deletion requests, or moderation needs, reach out to the creators directly:</p>
+        <ul>
+          <li><strong>Prateek Das:</strong> <a href="mailto:prateekdas5255@gmail.com">prateekdas5255@gmail.com</a></li>
+          <li><strong>Shikha Kushwaha:</strong> <a href="mailto:shikhakushwaha0005@gmail.com">shikhakushwaha0005@gmail.com</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-title">Table of contents</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#" class="toc-link">Thank you for using BioDex</a></li>
+        <li class="toc-item"><a href="#section-1" class="toc-link">1. Service & Licensing</a></li>
+        <li class="toc-item"><a href="#section-2" class="toc-link">2. Account Security</a></li>
+        <li class="toc-item"><a href="#section-3" class="toc-link">3. Real-World Safety</a></li>
+        <li class="toc-item"><a href="#section-4" class="toc-link">4. Prohibited Activities</a></li>
+        <li class="toc-item"><a href="#section-5" class="toc-link">5. Content and AI</a></li>
+        <li class="toc-item"><a href="#section-6" class="toc-link">6. Intellectual Property</a></li>
+        <li class="toc-item"><a href="#section-7" class="toc-link">7. Account Termination</a></li>
+        <li class="toc-item"><a href="#section-8" class="toc-link">8. Disclaimers & Liability</a></li>
+        
+        <li class="toc-item"><a href="#privacy-section" class="toc-link" style="font-weight: 700; color: #111; margin-top: 12px;">Privacy Policy</a></li>
+        <li class="toc-item"><a href="#contact-section" class="toc-link" style="font-weight: 700; color: #111;">Contact Us</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</body>
+</html>

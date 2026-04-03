@@ -1,0 +1,29 @@
+{
+  "name": "biodex-server",
+  "version": "1.0.0",
+  "description": "BioDex API Server",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@clerk/express": "^2.0.8",
+    "@google/generative-ai": "^0.24.1",
+    "@neondatabase/serverless": "^1.0.2",
+    "cloudinary": "^2.9.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.0",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "multer": "^2.1.1"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.4",
+    "nodemon": "^3.1.10"
+  }
+}

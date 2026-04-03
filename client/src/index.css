@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Custom Theme Tokens ─────────────────────────── */
+@theme {
+  --color-accent: #10b981;
+  --color-accent-light: #34d399;
+  --color-accent-dark: #059669;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+/* ── Base Styles ─────────────────────────────────── */
+@layer base {
+  body {
+    @apply bg-zinc-50 text-zinc-900 font-sans antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-zinc-950 text-zinc-100;
+  }
+  * {
+    @apply scroll-smooth;
+  }
+}
+
+/* ── Glassmorphism Utilities ─────────────────────── */
+@layer utilities {
+
+  /* Light sidebar/header glass */
+  .glass {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(228, 228, 231, 0.5); /* zinc-200/50 */
+  }
+
+  /* Dark mode glass */
+  .dark .glass {
+    background: rgba(9, 9, 11, 0.85); /* zinc-950 */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(39, 39, 42, 0.5); /* zinc-800/50 */
+  }
+
+  /* Card Glass (slightly lighter) */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(228, 228, 231, 0.4);
+    @apply shadow-sm transition-all duration-200;
+  }
+  .dark .glass-card {
+    background: rgba(24, 24, 27, 0.8); /* zinc-900 */
+    border-color: rgba(39, 39, 42, 0.4);
+  }
+
+  /* Techy accent glow for buttons */
+  .glow-emerald {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    transition: box-shadow 0.3s ease;
+  }
+  .glow-emerald:hover {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+  }
+
+  /* Subtle scanline/grid texture on background (very faint) */
+  .bg-grid {
+    background-image: linear-gradient(rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+/* ── Leaflet Overrides ───────────────────────────── */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  @apply bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 rounded-xl shadow-xl border border-zinc-200 dark:border-zinc-800 p-1 transition-colors;
+}
+.custom-popup .leaflet-popup-tip {
+  @apply bg-white dark:bg-zinc-900;
+}
+.custom-popup .leaflet-popup-close-button {
+  @apply top-3 right-3 text-zinc-500 hover:text-emerald-500 transition-colors;
+}
+
+/* ── Scrollbar Styling ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-emerald-400;
+}
