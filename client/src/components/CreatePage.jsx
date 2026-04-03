@@ -8,13 +8,11 @@ import {
 import api from "../lib/api";
 
 const generateHash = async (file) => {
-  if (!window.crypto?.subtle) {
-    // Fallback for non-secure contexts: just use a random string + size
-    return `fallback-${file.size}-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-  }
-  const buffer = await file.arrayBuffer();
-  const hashBuffer = await window.crypto.subtle.digest("SHA-256", buffer);
-  return Array.from(new Uint8Array(hashBuffer)).map((b) => b.toString(16).padStart(2, "0")).join("");
+  // Ultra-safe fallback for all browser environments
+  const timestamp = Date.now();
+  const random = Math.random().toString(36).slice(2, 9);
+  const size = file?.size || 0;
+  return `sight-${timestamp}-${size}-${random}`;
 };
 
 export default function CreatePage() {
