@@ -63,6 +63,7 @@ router.post("/", async (req, res) => {
       return res.status(409).json({ error: "Duplicate image detected" });
     }
     res.status(500).json({ error: err.message });
+    console.error("❌ BioDex Save Sighting Error:", err);
   }
 });
 
