@@ -9,4 +9,6 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
+console.log("🚀 BioDex API Connected to:", baseURL);
+
 export default api;
