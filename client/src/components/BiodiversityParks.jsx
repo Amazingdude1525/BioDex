@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { TreePine, ChevronDown, ChevronRight, Info, X } from "lucide-react";
+import { TreePine, ChevronRight, Info, X } from "lucide-react";
 
 const PARKS = [
   {
@@ -103,7 +103,6 @@ const PARKS = [
 
 export default function BiodiversityParks({ onClose }) {
   const [openPark, setOpenPark] = useState(null);
-  const [activeFact, setActiveFact] = useState(null);
 
   return (
     <div className="flex flex-col h-full">
@@ -118,33 +117,12 @@ export default function BiodiversityParks({ onClose }) {
         </button>
       </div>
 
-      {/* Active Fun Fact Box */}
-      <AnimatePresence>
-        {activeFact && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-            className="mx-3 mt-3 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/50 rounded-xl shrink-0"
-          >
-            <div className="flex items-start gap-2">
-              <Info className="w-4 h-4 text-emerald-600 flex-none mt-0.5" />
-              <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed">{activeFact}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Parks List */}
       <div className="flex-1 overflow-y-auto p-3 space-y-1">
         {PARKS.map((park) => (
           <div key={park.id}>
             <button
-              onClick={() => {
-                setOpenPark(openPark === park.id ? null : park.id);
-                setActiveFact(null);
-              }}
+              onClick={() => setOpenPark(openPark === park.id ? null : park.id)}
               className="w-full flex items-center justify-between px-3 py-3 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800/60 transition-colors text-left"
             >
               <div>
@@ -169,36 +147,35 @@ export default function BiodiversityParks({ onClose }) {
                     <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed mb-3">{park.description}</p>
 
                     {/* Species Grid */}
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2">Species found here</p>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-2 mt-4">Species found here (Hover for info)</p>
                     <div className="grid grid-cols-3 gap-2">
                       {park.species.map((species) => (
-                        <motion.button
+                        <motion.div
                           key={species.name}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.96 }}
-                          onClick={() => setActiveFact(activeFact === species.fact ? null : species.fact)}
-                          className={`flex flex-col items-center gap-1.5 p-2 rounded-xl border transition-all ${
-                            activeFact === species.fact
-                              ? "border-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 dark:border-emerald-700"
-                              : "border-zinc-200 dark:border-zinc-700 hover:border-emerald-300 dark:hover:border-emerald-700 bg-white dark:bg-zinc-900"
-                          }`}
+                          whileHover={{ scale: 1.5, zIndex: 50, y: -20 }}
+                          className="group relative flex flex-col items-center gap-1.5 p-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer shadow-sm hover:shadow-2xl hover:border-emerald-400 dark:hover:border-emerald-600 transition-shadow"
                         >
-                          <div className="w-14 h-14 rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+                          <div className="w-14 h-14 rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 group-hover:w-20 group-hover:h-20 transition-all duration-300 transform-gpu">
                             <img
                               src={species.image}
                               alt={species.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
-                                // Fallback to a leaf emoji placeholder if image is missing
                                 e.target.style.display = "none";
                                 e.target.parentElement.innerHTML = `<span class="w-full h-full flex items-center justify-center text-2xl">🌿</span>`;
                               }}
                             />
                           </div>
-                          <span className="text-[10px] font-semibold text-zinc-700 dark:text-zinc-300 text-center leading-tight">
+                          <span className="text-[10px] font-semibold text-zinc-700 dark:text-zinc-300 text-center leading-tight group-hover:mb-1">
                             {species.name}
                           </span>
-                        </motion.button>
+                          
+                          {/* Animated Fact Overlay on Hover */}
+                          <div className="absolute top-[105%] left-1/2 -translate-x-1/2 w-48 opacity-0 scale-95 origin-top pointer-events-none group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 p-2.5 bg-emerald-700 text-white text-[9px] leading-relaxed rounded-xl shadow-xl flex items-start gap-1.5 z-[9999] border-emerald-500 border">
+                            <Info className="w-3 h-3 text-emerald-200 flex-none mt-0.5" />
+                            <p>{species.fact}</p>
+                          </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>

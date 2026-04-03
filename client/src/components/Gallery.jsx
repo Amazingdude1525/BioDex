@@ -93,12 +93,19 @@ function SightingCard({ sighting, isSaved, onSave, onMapClick }) {
 }
 
 export default function Gallery() {
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const navigate = useNavigate();
   const [sightings, setSightings] = useState([]);
   const [savedIds, setSavedIds] = useState(new Set());
   const [isLoading, setIsLoading] = useState(true);
   const [cityFilter, setCityFilter] = useState("All");
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good morning";
+    if (hour < 17) return "Good afternoon";
+    return "Good evening";
+  };
 
   useEffect(() => {
     async function loadData() {
