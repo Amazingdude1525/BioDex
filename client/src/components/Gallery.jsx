@@ -153,6 +153,19 @@ export default function Gallery() {
 
   return (
     <div className="w-full max-w-7xl mx-auto px-4 py-6 h-full overflow-y-auto">
+      {/* ── Header & Greeting ── */}
+      <div className="mb-6 space-y-1">
+        {isLoaded && user && (
+          <motion.h1 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl font-black tracking-tight text-zinc-900 dark:text-zinc-100"
+          >
+            {getGreeting()}, <span className="text-emerald-500">{user.firstName || "Explorer"}</span> 🌿
+          </motion.h1>
+        )}
+        <p className="text-sm text-zinc-500 font-medium">Discover recent sightings from the community</p>
+      </div>
 
       {/* Filters */}
       <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-4">
