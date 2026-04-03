@@ -15,7 +15,7 @@ export const users = pgTable("users", {
 
 // ── Sightings ──────────────────────────────────────
 export const sightings = pgTable("sightings", {
-  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  id: text("id").primaryKey(),                    // Unique ID from client or random
   userId: text("user_id").notNull().references(() => users.id),
   speciesName: text("species_name").notNull(),
   imageUrl: text("image_url").notNull(),

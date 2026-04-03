@@ -51,10 +51,33 @@ router.get("/user/:userId", async (req, res) => {
 // POST /api/sightings — Create a new sighting
 router.post("/", async (req, res) => {
   try {
-    const { userId, speciesName, imageUrl, imageHash, lat, lng, cityName, isPet } = req.body;
+    const { userId, speciesName, imageUrl, imageHash, lat, lng, cityName, isPet, userName } = req.body;
+
+    // Ensure user exists in local DB (Upsert)
+    if (userId) {
+      const [existing] = await db.select().from(users).where(eq(users.id, userId));
+      if (!existing) {
+        await db.insert(users).values({
+          id: userId,
+          name: userName || "User",
+          onboardingComplete: false,
+        });
+      }
+    }
+
     const [sighting] = await db
       .insert(sightings)
-      .values({ userId, speciesName, imageUrl, imageHash, lat, lng, cityName, isPet: isPet ?? false })
+      .values({ 
+        id: `sighting_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`,
+        userId, 
+        speciesName, 
+        imageUrl, 
+        imageHash, 
+        lat, 
+        lng, 
+        cityName, 
+        isPet: isPet ?? false 
+      })
       .returning();
 
     res.status(201).json(sighting);

@@ -98,6 +98,7 @@ export default function CreatePage() {
 
       await api.post("/sightings", {
         userId: user.id,
+        userName: user.fullName || user.firstName || "User",
         speciesName: speciesName.trim(),
         imageUrl: uploadData.url,
         imageHash,
