@@ -19,6 +19,13 @@ Urban biodiversity data is incredibly scarce because everyday citizens lack a si
 * **🗺️ Interactive Community Map:** A real-time, Leaflet-powered map displaying all community sightings.
 * **🏆 Gamified Progression:** Users earn "Discovery Badges" to incentivize continuous reporting.
 
+# System Architecture – BioDex
+<img width="827" height="348" alt="Screenshot 2026-04-03 140634" src="https://github.com/user-attachments/assets/30346a74-de9d-4c76-82ed-843de99cc163" />
+
+# Flowchart – BioDex
+<img width="1070" height="877" alt="Screenshot 2026-04-03 134217" src="https://github.com/user-attachments/assets/ddc8055d-8fda-4db1-9cda-d34e49a7cb65" />
+
+
 ## 🛠️ Tech Stack
 * **Frontend:** React.js (Vite) + Tailwind CSS
 * **Authentication:** **Clerk** (Identity-as-a-Service)
