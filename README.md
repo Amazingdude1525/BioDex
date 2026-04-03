@@ -9,6 +9,13 @@
 
 > "Think Pokémon GO, but for real urban wildlife. It removes the friction of complex data entry by letting citizens easily snap photos of local animals, automatically mapping them using native browser GPS. It rewards users with discovery badges, instantly creating a rich, crowdsourced dataset that environmental researchers can actually use."
 
+## 🗺️ Product Preview
+![Community Gallery](docs/screenshots/gallery.png)
+*Live Community Gallery showcasing real-time sightings.*
+
+![User Profile](docs/screenshots/profile.png)
+*Gamified User Profile with personal discovery badges and stats.*
+
 ## 🌍 The Mission
 Urban biodiversity data is incredibly scarce because everyday citizens lack a simple, structured, and engaging way to contribute. Without crowdsourced data, monitoring species decline or ecological health is nearly impossible. **BioDex bridges that gap by making data collection fun and effortless.**
 
@@ -20,10 +27,10 @@ Urban biodiversity data is incredibly scarce because everyday citizens lack a si
 * **🏆 Gamified Progression:** Users earn "Discovery Badges" to incentivize continuous reporting.
 
 # System Architecture – BioDex
-<img width="827" height="348" alt="Screenshot 2026-04-03 140634" src="https://github.com/user-attachments/assets/30346a74-de9d-4c76-82ed-843de99cc163" />
+<img width="827" height="348" alt="System Architecture" src="https://github.com/user-attachments/assets/30346a74-de9d-4c76-82ed-843de99cc163" />
 
 # Flowchart – BioDex
-<img width="1070" height="877" alt="Screenshot 2026-04-03 134217" src="https://github.com/user-attachments/assets/ddc8055d-8fda-4db1-9cda-d34e49a7cb65" />
+<img width="1070" height="877" alt="Flowchart" src="https://github.com/user-attachments/assets/ddc8055d-8fda-4db1-9cda-d34e49a7cb65" />
 
 
 ## 🛠️ Tech Stack
