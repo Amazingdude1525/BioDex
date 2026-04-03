@@ -45,6 +45,3 @@ Urban biodiversity data is incredibly scarce because everyday citizens lack a si
 * **🤖 AI Vision Integration:** Utilizing **Gemini AI** to automatically identify animal species and reduce entry errors.
 * **📊 Community Verification:** An upvote system to crowdsource the verification of rare sightings.
 * **🏫 Scalability:** Expanding to a nationwide platform with regional leaderboards and school partnerships.
-
-## 💻 Local Setup
-*(Note: Full deployment links and live demos are available at the Vercel link above as of April 3, 2026).*
