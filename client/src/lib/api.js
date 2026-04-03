@@ -11,7 +11,7 @@ const api = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
-console.log("🚀 BioDex API Connected to:", baseURL);
+console.log("🚀 BioDex API v1.0.4 Connected to:", baseURL);
 
 // Detailed Error Logger for Production
 api.interceptors.response.use(
